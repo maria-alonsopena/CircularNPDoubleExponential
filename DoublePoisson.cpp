@@ -41,76 +41,6 @@ double my_fun_di(double y, double g){
 }
 
 
-// // [[Rcpp::depends(RcppArmadillo)]]
-// // [[Rcpp::export]]
-// List my_fun_PoisM(NumericVector xseq, NumericVector x, NumericVector y, List startv, const double kappa, NumericVector gammai){
-	
-	// int n = y.size();
-	// int nt = xseq.size();
-		
-	// double pi = 3.14159265358979323846264338327950;
-	// double beskappa = Rf_bessel_i(kappa,0,1);
-	
-	// List startvv = Rcpp::clone(startv);
-	// NumericVector beta0 = startvv[0];
-	// NumericVector beta1 = startvv[1];
-	
-	// NumericMatrix x_t(n,nt);
-	// NumericMatrix s(n,nt);
-	// NumericMatrix t_s(n,nt);
-	// NumericMatrix ets(n,nt);
-	// NumericMatrix kxtM(n,nt);
-	// NumericMatrix kkxtM(n,nt);
-	// for(int i=0; i<n; ++i){
-		// for(int j=0; j<nt; ++j){
-			// x_t(i,j) = x[i]-xseq[j];
-			// s(i,j) = sin(x_t(i,j));
-			// t_s(i,j) = beta0[j]+beta1[j]*s(i,j);
-			// ets(i,j) = exp(t_s(i,j));
-			// kxtM(i,j) = exp(kappa * cos (x_t(i,j)))/(beskappa*2*pi);
-			// kkxtM(i,j) = kxtM(i,j)/gammai[i];
-		// }
-	// }
-	
-	
-	
-	// NumericVector bn0(nt);
-	// NumericVector bn1(nt);
-	// NumericVector bn2(nt);
-	// for(int j=0; j<nt; ++j){
-		
-		// bn0[j] = sum(kkxtM(_,j)*ets(_,j));
-		// bn1[j] = sum(kkxtM(_,j)*ets(_,j)*s(_,j));
-		// bn2[j] = sum(kkxtM(_,j)*ets(_,j)*s(_,j)*s(_,j));
-
-	// }
-	
-	
-	// NumericMatrix bjti0(nt,n);
-	// NumericMatrix bjti1(nt,n);
-	// for(int j=0; j<nt; ++j){
-		// for(int i=0; i<n; ++i){
-			// bjti0(j,i) = kkxtM(i,j)*(bn2[j]-s(i,j)*bn1[j]);
-			// bjti1(j,i) = kkxtM(i,j)*(s(i,j)*bn0[j]-bn1[j]);		
-		// }
-	// }
-	
-	// NumericMatrix K(n,nt);
-	// for(int i=0; i<n; ++i){
-		// for(int j=0; j<nt; ++j){
-			// K(i,j) = y[i]-ets(i,j);
-		// }
-	// }
-
-	// for(int j=0; j<nt; ++j){
-		// beta0[j] = sum(bjti0(j,_)*K(_,j))/(bn2[j]*bn0[j]-bn1[j]*bn1[j]) + beta0[j];
-		// beta1[j] = sum(bjti1(j,_)*K(_,j))/(bn2[j]*bn0[j]-bn1[j]*bn1[j]) + beta1[j];
-	// }
-	
-	// List L = List::create(beta0, beta1);
-	// return L;
-// }
-
 
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export]]
@@ -650,11 +580,11 @@ List my_fun_DoublePois_j(NumericVector xseq, NumericVector x, NumericVector y, N
 	double res = 50000;
 	while (res>=1+tol || res <= 1-tol){
 	
-		beta0_old = Rcpp::clone(beta0);				// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		beta1_old = Rcpp::clone(beta1);				// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		beta0G_old = Rcpp::clone(beta0G);			// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		beta1G_old = Rcpp::clone(beta1G);			// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		psii_old = Rcpp::clone(psii);				// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		beta0_old = Rcpp::clone(beta0);				
+		beta1_old = Rcpp::clone(beta1);				
+		beta0G_old = Rcpp::clone(beta0G);			
+		beta1G_old = Rcpp::clone(beta1G);			
+		psii_old = Rcpp::clone(psii);				
 		
 		psii = my_fun_PoisG(x,x_kk,y_kk,psii_old,nu,gi0_kk);
 		psii1 = psii[0];
