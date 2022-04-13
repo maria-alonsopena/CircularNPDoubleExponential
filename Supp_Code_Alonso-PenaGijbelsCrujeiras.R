@@ -1,12 +1,9 @@
 ###################################################################################################################
 ######   Flexible joint modeling of mean and dispersion for the directional tuning of neuronal spike counts  ######
-######                     								                                                                   ######
-######                    María Alonso-Pena,	    Irène Gijbels    and   Rosa M. Crujeiras                   ######
-######                                                                          								             ######
-######                     Universidade de         KU Leuven		          Universidade de                    ######
-######   		                  Santiago de 				                          Santiago de                      ######                                  
-######  		                  Compostela                                    Compostela                       ######
-######                     								                                                                   ######
+###################################################################################################################
+# María Alonso-Pena, Universidade de Santiago de Compostela	    
+# Irène Gijbels, KU Leuven    
+# Rosa M. Crujeiras, Universidade de Santiago de Compostela	                   
 ###################################################################################################################
 
 ## Supplementary R code for the paper 
